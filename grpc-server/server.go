@@ -4,7 +4,7 @@ import (
 	"context"
 	"net"
 
-	pb "github.com/go-rpc/proto"
+	pb "github.com/iamvasanth07/learning-go/proto"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"

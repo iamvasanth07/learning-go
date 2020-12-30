@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "github.com/go-rpc/proto";
+option go_package = "github.com/learning-go/proto";
 
 message  Request {
     int64 a = 1;
