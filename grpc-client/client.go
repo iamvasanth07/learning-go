@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"strconv"
 
-	pb "github.com/iamvasanth07/learning-go/proto"
+	pb "github.com/learning-go/proto"
 
 	"github.com/gin-gonic/gin"
 	"google.golang.org/grpc"
@@ -35,7 +35,7 @@ func main() {
 		req := &pb.Request{A: int64(a), B: int64(b)}
 
 		if response, err := client.Add(ctx, req); err == nil {
-			ctx.JSON(http.StatusOK, gin.H{"result": fmt.Sprintf(response.Result)})
+			ctx.JSON(http.StatusOK, gin.H{"result": fmt.Sprint(response.Result)})
 		} else {
 			ctx.JSON(http.StatusInternalServerError, gin.H{"error": "internal server error"})
 		}
@@ -54,13 +54,13 @@ func main() {
 		req := &pb.Request{A: int64(a), B: int64(b)}
 
 		if response, err := client.Multiply(ctx, req); err == nil {
-			ctx.JSON(http.StatusOK, gin.H{"result": fmt.Sprintf(response.Result)})
+			ctx.JSON(http.StatusOK, gin.H{"result": fmt.Sprint(response.Result)})
 		} else {
 			ctx.JSON(http.StatusInternalServerError, gin.H{"error": "internal server error"})
 		}
 	})
 
-	if err := g.Run(":8080"); err != nil {
+	if err := g.Run(":8090"); err != nil {
 		log.Fatalf("Failed to run server: %v", err)
 	}
 

@@ -2,9 +2,10 @@ package main
 
 import (
 	"context"
+	"log"
 	"net"
 
-	pb "github.com/iamvasanth07/learning-go/proto"
+	pb "github.com/learning-go/proto"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
@@ -33,6 +34,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	log.Println("🚀 gRPC server listening on localhost:4040")
 	defer listener.Close()
 
 	srv := grpc.NewServer()

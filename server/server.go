@@ -56,7 +56,7 @@ func main() {
 
 	listener, err := net.Listen("tcp", "localhost:4040")
 	if err != nil {
-		log.Fatal("Listener error:", err)
+		log.Println("Listener error:", err)
 	}
 
 	defer listener.Close()
