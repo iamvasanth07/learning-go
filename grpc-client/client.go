@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"strconv"
 
-	pb "go-rpc/grpc-client/proto"
+	pb "github.com/go-rpc/proto"
 
 	"github.com/gin-gonic/gin"
 	"google.golang.org/grpc"
