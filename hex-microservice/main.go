@@ -13,8 +13,8 @@ import (
 	"github.com/go-chi/chi/middleware"
 	h "github.com/learning-go/hex-microservice/api"
 
-	mr "github.com/learning-go/hex-microservice/repository"
-	rr "github.com/learning-go/hex-microservice/repository"
+	mr "github.com/learning-go/hex-microservice/repository/mongo"
+	rr "github.com/learning-go/hex-microservice/repository/redis"
 	"github.com/learning-go/hex-microservice/shortener"
 )
 

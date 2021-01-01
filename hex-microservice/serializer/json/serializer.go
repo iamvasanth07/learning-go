@@ -3,7 +3,7 @@ package json
 import (
 	"encoding/json"
 
-	"github.com/learning-go/iamvasanth07/hex-microservice/shortener"
+	"github.com/learning-go/hex-microservice/shortener"
 	"github.com/pkg/errors"
 )
 

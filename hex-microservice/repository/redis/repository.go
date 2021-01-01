@@ -10,7 +10,7 @@ import (
 )
 
 type redisRepository struct {
-	client redis.Client
+	client *redis.Client
 }
 
 func newRedisClient(redisURL string) (*redis.Client, error) {
@@ -48,7 +48,7 @@ func (r *redisRepository) Find(code string) (*shortener.Redirect, error) {
 		return nil, errors.Wrap(err, "repository.Redirect.Find")
 	}
 	if len(data) == 0 {
-		return nil, errors.Wrap(shortener.ErrRedirectNonFound, "repository.Redirect.Find")
+		return nil, errors.Wrap(shortener.ErrRedirectNotFound, "repository.Redirect.Find")
 	}
 	createdAt, err := strconv.ParseInt(data["created_at"], 10, 64)
 	if err != nil {

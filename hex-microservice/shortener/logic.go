@@ -6,11 +6,11 @@ import (
 
 	errs "github.com/pkg/errors"
 	"github.com/teris-io/shortid"
-	validate "gopkg.in/dealancer/validate.v2"
+	"gopkg.in/dealancer/validate.v2"
 )
 
 var (
-	ErrRedirectNonFound = errors.New("Redirect Not Found")
+	ErrRedirectNotFound = errors.New("Redirect Not Found")
 	ErrRedirectInvalid  = errors.New("Redirect Invalid")
 )
 

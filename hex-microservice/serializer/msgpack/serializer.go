@@ -1,7 +1,7 @@
 package msgpack
 
 import (
-	"github.com/learning-go/iamvasanth07/hex-microservice/shortener"
+	"github.com/learning-go/hex-microservice/shortener"
 	"github.com/pkg/errors"
 	"github.com/vmihailenco/msgpack"
 )

@@ -1,15 +1,14 @@
 package api
 
 import (
-	"errors"
 	"io/ioutil"
 	"log"
 	"net/http"
 
 	"github.com/go-chi/chi"
+	js "github.com/learning-go/hex-microservice/serializer/json"
+	ms "github.com/learning-go/hex-microservice/serializer/msgpack"
 	"github.com/learning-go/hex-microservice/shortener"
-	js "github.com/learning-go/hex-microservice/shortener/json"
-	ms "github.com/learning-go/hex-microservice/shortener/msgpack"
 	"github.com/pkg/errors"
 )
 
@@ -46,7 +45,7 @@ func (h *handler) Get(w http.ResponseWriter, r *http.Request) {
 	code := chi.URLParam(r, "code")
 	redirect, err := h.redirectService.Find(code)
 	if err != nil {
-		if errors.Cause(err) == shortener.ErrRedirectNonFound {
+		if errors.Cause(err) == shortener.ErrRedirectNotFound {
 			http.Error(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)
 			return
 		}

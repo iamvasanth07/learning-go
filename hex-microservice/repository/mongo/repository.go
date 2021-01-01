@@ -2,6 +2,7 @@ package mongo
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"github.com/learning-go/hex-microservice/shortener"
@@ -54,7 +55,7 @@ func (r *mongoRepository) Find(code string) (*shortener.Redirect, error) {
 	err := collection.FindOne(ctx, filter).Decode(&redirect)
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
-			return nil, errors.Wrap(shortener.ErrRedirectNonFound, "repository.Redirect.Find")
+			return nil, errors.Wrap(shortener.ErrRedirectNotFound, "repository.Redirect.Find")
 
 		}
 		return nil, errors.Wrap(err, "repository.Redirect.Find")
@@ -66,6 +67,7 @@ func (r *mongoRepository) Store(redirect *shortener.Redirect) error {
 	ctx, cancel := context.WithTimeout(context.Background(), r.timeout)
 	defer cancel()
 	collection := r.client.Database(r.database).Collection("redirects")
+	fmt.Println(collection)
 	_, err := collection.InsertOne(
 		ctx,
 		bson.M{
